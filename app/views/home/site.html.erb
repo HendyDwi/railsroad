@@ -3,7 +3,23 @@
 <br>
 
 <% @posts.each do |p|%>
-<h1><%=p.title%></h1>
+<h5><%=p.title%></h5>
 <p><%=p.body%></p>
+<br>
+
+
+<h2>Komentar</h2>
+<% p.komens.each do |c| %>
+<h3><%= c.email %></h3>
+ <p><%= c.isi %></p>
+<% end %>
+
+<form action="<%= komen_path(p.id) %>" method="POST">
+<br>
+<input type="text" name="email_komen">
+<br>
+<input type="text" name="isi_komen">
+<input type="submit">
+</form>
 <br>
 <% end %>

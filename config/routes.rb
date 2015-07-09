@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 root 'home#site'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-
+ post 'henz/:post_id/komen' => 'posts#komen', as: :komen
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

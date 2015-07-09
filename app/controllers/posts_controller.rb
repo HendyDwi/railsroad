@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+ skip_before_filter :verify_authenticity_token
   # GET /posts
   # GET /posts.json
 
   def site
   @posts = Post.All
   end
-  
+
   def index
     @posts = Post.all
   end
@@ -42,6 +42,14 @@ class PostsController < ApplicationController
     end
   end
 
+
+ def komen 
+    @komen = Post.find(params[:post_id]).komens.new
+  @komen.isi=params[:isi_komen] 
+  @komen.email=params[:email_komen]
+  @komen.save
+  redirect_to root_path
+  end 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
